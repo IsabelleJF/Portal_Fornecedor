@@ -1,0 +1,17 @@
+<div id="login" class="section hidden">
+    <h2>Login de Fornecedor</h2>
+    <form onsubmit="login(); return false;">
+        <label for="cnpj">CNPJ:</label>
+        <input type="text" id="cnpj" required>
+        <label for="password">Senha:</label>
+        <input type="password" id="password" required>
+        
+        <!-- CAPTCHA simples -->
+        <div id="captcha" style="margin-top: 1rem;">
+            <p>Resolva: <span id="captcha-question"></span></p>
+            <input type="number" id="captcha-answer" required>
+        </div>
+        
+        <button type="submit" class="button">Entrar</button>
+    </form>
+</div>
