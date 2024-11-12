@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Fornecedores</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/captcha.js" defer></script>
+</head>
+<body>
+
+<!-- Cabeçalho -->
+<header>
+    <img src="https://bemolqa.vtexassets.com/assets/vtex/assets-builder/bemolqa.store-theme/14.0.1/images/bemol-logo___0e4ce7bac603e6a725fdc3b40ad03e13.svg" alt="Logo Bemol">
+</header>
+    <p>Portal de Fornecedores</p>
+<!-- Navegação -->
+<nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('login')">Login</a>
+</nav>
+
+<!-- Conteúdo principal -->
+<div class="container">
+    
+    <!-- Seção Home -->
+    <div id="home" class="section">
+        <h2>Bem-vindo ao Portal de Fornecedores</h2>
+        <p>Bem-vindo! Ao acessar o site e fazer login com seu CNPJ e senha, você encontrará todas as informações relevantes para o seu acompanhamento</p>
+        <h2>Orientações</h2>
+        <p>Após o login, na área de Report, você terá acesso ao relatório mensal com dados sobre vendas, estoque, perfil de gênero, idade e outros insights importantes.</p> 
+        <p>Em Extrato de VPC, você poderá consultar seu saldo mais atualizado e as ações feitas no mês.</p>
+        <p>Em Comprovações de Mídias, estarão disponíveis todas as comprovações de campanhas vigentes.</p>
+        <p>Na seção de Contatos do Comercial e Trade, você encontrará os números de telefone e e-mails dos colaboradores para atendimento direto.</p>
+        <h2>Regra para Fornecedores</h2>
+        <p><strong>Nota Fiscal de Serviço:</strong> A NF deve ser emitida no dia 20 do mês corrente, e todo pagamento ocorre após 30 dias da entrada da NF.</p>
+        <p><strong>Nota Fiscal de Produto:</strong> Pode ser faturada em qualquer dia, mas o pagamento será feito 30 dias após o recebimento da mercadoria.</p>
+        <h2>Documentação</h2>
+        <ul>
+            <li><a href="https://bemol.vteximg.com.br/arquivos/codigo-de-etica-bemol.pdf" target="_blank">Código de Ética Bemol</a></li>
+            <li><a href="https://bemol.vteximg.com.br/arquivos/politica-anticorrupcao-e-antissuborno-bemol.pdf" target="_blank">Política de Anticorrupção e Antissuborno Bemol</a></li>
+        </ul>
+         <!-- Vídeo Fixo no Canto Inferior Direito -->
+        <div class="fixed-video">
+            <video controls width="300">
+         <source src="video.mp4" type="video/mp4">
+             Seu navegador não suporta o elemento de vídeo.
+            </video>
+         </div>
+
+        <div style="text-align: center;">
+            <a href="https://forms.office.com/r/UyXLYU8LKt" target="_blank" class="button">Registrar como Fornecedor</a>
+        </div>
+        <p>Aproveite sua navegação!</p>
+    </div>
+
+    <!-- Seção Login -->
+    <div id="login" class="section hidden">
+        <h2>Login de Fornecedor</h2>
+        <form onsubmit="login(); return false;">
+            <label for="cnpj">CNPJ:</label>
+            <input type="text" id="cnpj" required>
+            <label for="password">Senha:</label>
+            <input type="password" id="password" required>
+            <div id="captcha" style="margin-top: 1rem;">
+                <p>Resolva: <span id="captcha-question"></span></p>
+                <input type="number" id="captcha-answer" required>
+            </div>
+            <button type="submit" class="button">Entrar</button>
+        </form>
+    </div>
+
+    <!-- Seção Dashboard -->
+    <div id="dashboard" class="section hidden">
+        <h2>Painel do Fornecedor</h2>
+        <div class="options">
+            <span class="button" onclick="showSection('report')">Acessar Report</span>
+            <span class="button" onclick="showSection('vpc')">Ver Extrato de VPC</span>
+            <span class="button" onclick="showSection('stores')">Comprovações de Lojas</span>
+            <span class="button" onclick="showSection('comercial')">Contatos do Comercial</span>
+            <span class="button" onclick="showSection('trade')">Contatos do Trade</span>
+        </div>
+    </div>
+
+    <!-- Outras Seções do Painel -->
+    <div id="report" class="section hidden">
+        <span class="button" onclick="showSection('dashboard')">Voltar ao Painel</span>
+        <h2>Report do Fornecedor</h2>
+        <p>Esta é a seção onde o fornecedor pode acessar seu report completo.</p>
+        <p>Esse report é dividido por categoria, você irá encontrar informações de vendas, estoque, recorrência, perfil de clientes e muito mais.</p>
+        <ul id="marjon-report" class="hidden">
+            <li><a href="MARJOM MK_CAMAS, COLCHOES E TRAVESSEIROS.xlsx" download="MARJOM MK_CAMAS, COLCHOES E TRAVESSEIROS.xlsx">Relatório de Camas, Colchões e Travesseiros (MK) - Setembro</a></li>
+            <li><a href="MARJOM_MOVEIS.xlsx" download="MARJOM_MOVEIS.xlsx">Relatório de Móveis - Setembro</a></li>
+            <li><a href="MARJOM_CAMAS, COLCHOES E TRAVESSEIROS.xlsx" download="MARJOM_CAMAS, COLCHOES E TRAVESSEIROS.xlsx">Relatório de Camas, Colchões e Travesseiros - Setembro</a></li>
+        </ul>
+    
+        <!-- Botão para Enviar por E-mail -->
+        <button onclick="sendEmail()" class="button">Enviar por E-mail</button>
+    </div>
+    <div id="vpc" class="section hidden">
+        <span class="button" onclick="showSection('dashboard')">Voltar ao Painel</span>
+        <h2>Extrato de VPC</h2>
+ <!--       <p>Visualize o extrato de VPC detalhado aqui.</p> -->
+        <div id="marjon-vpc" class="hidden">
+            <p>Conteúdo exclusivo da Marjom para visualização do extrato detalhado de VPC.</p>
+            <li><a href="MARJOM_VPC.xlsx" download="MARJOM_VPC.xlsx">Extrato de VPC - Setembro</a></li>
+        </div>
+    </div>
+
+    <div id="stores" class="section hidden">
+        <span class="button" onclick="showSection('dashboard')">Voltar ao Painel</span>
+        <h2>Comprovações de Lojas</h2>
+        <p>Confira as comprovações de lojas fornecidas.</p>
+        <div style="text-align: center;">
+            <span class="image-text">Amazonas Shopping - ADESIVO DE ESCADA</span>
+            <img id="marjon-image" src="imagem.jpeg" alt="Imagem de Comprovação de Loja" class="hidden" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        </div>
+    </div>
+
+    <div id="comercial" class="section hidden">
+        <span class="button" onclick="showSection('dashboard')">Voltar ao Painel</span>
+        <h2>Contatos do Comercial</h2>
+        <p>Informações de contato da equipe comercial.</p>
+        <p>Contato para Móveis - Maria (92) 9999-99999 - maria@bemol.com.br</p>
+        <p>Contato para Telefonia - José (92) 9999-99998 - jose@bemol.com.br</p>
+    </div>
+
+    <div id="trade" class="section hidden">
+        <span class="button" onclick="showSection('dashboard')">Voltar ao Painel</span>
+        <h2>Contatos do Trade</h2>
+        <p>Informações de contato da equipe de trade. </p>
+        <p>Contato para Móveis - Maria (92) 9999-99999 - maria@bemol.com.br</p>
+        <p>Contato para Telefonia - José (92) 9999-99998 - jose@bemol.com.br</p>
+         </p>
+    </div>
+
+</div>
+<!-- Seção Report com Links de Download -->
+
+<!-- Rodapé -->
+<footer>
+    <p>&copy; 2024 Portal de Fornecedores - Todos os direitos reservados.</p>
+</footer>
+
+<script src="assets/captcha.js"></script>
+
+</body>
+</html>
